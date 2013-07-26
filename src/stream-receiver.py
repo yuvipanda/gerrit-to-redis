@@ -6,7 +6,7 @@ import paramiko
 import redis
 import yaml
 
-CONFIG_FILE = os.path.expanduser('~/.suchabot.yaml')
+CONFIG_FILE = os.path.join(os.path.dirname(__file__), '../config.yaml')
 with open(CONFIG_FILE) as f:
     config = yaml.load(f)
 

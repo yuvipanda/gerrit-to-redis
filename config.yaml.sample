@@ -1,0 +1,10 @@
+gerrit:
+    username: suchabot
+    server: gerrit.wikimedia.org
+    port: 29418
+redis:
+    host: tools-mc
+    db: 7
+stream_receiver:
+    redis_prefix: "some-long-prefix-that-was-generated-by-openssl"
+    clients_key: "key-to-use-to-store-clients-list"
