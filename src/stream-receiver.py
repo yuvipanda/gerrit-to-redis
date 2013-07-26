@@ -6,7 +6,8 @@ import paramiko
 import redis
 import yaml
 
-CONFIG_FILE = os.path.join(os.path.dirname(__file__), '../config.yaml')
+BASE_PATH = os.path.join(os.path.dirname(__file__), '..')
+CONFIG_FILE = os.path.join(BASE_PATH, 'config.yaml')
 with open(CONFIG_FILE) as f:
     config = yaml.load(f)
 
@@ -31,7 +32,8 @@ logging.info('Attempting to Redis connection to %s', REDIS_HOST)
 red = redis.StrictRedis(host=REDIS_HOST, db=REDIS_DB)
 logging.info('Redis connection to %s succeded', REDIS_HOST)
 
-with open('publish-clients.lua') as f:
+PUBLISH_LUA_PATH = os.path.join(BASE_PATH, 'src/publish-clients.lua')
+with open(PUBLISH_LUA_PATH) as f:
     publish_clients = red.register_script(f.read())
 
 def make_key(*key_parts):
